@@ -4,7 +4,7 @@ const fs = require('fs');
 const {v4: uuidv4} = require('uuid');
 
 const app = express(); //creating an express server
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware to serve static files from the public directory. Anything outside of requested server, should look in public file. Other way to look at it is, the frontend files in the public folder that are not necessarily defined in the code below
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));

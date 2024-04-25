@@ -29,7 +29,7 @@ app.get('/api/notes', (req, res) => {
   // reading notes
   var notes = [];
 
-  notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+  notes = JSON.parse(fs.readFileSync('./db.json', 'utf8'));
 
   // returning notes
   res.json(notes);
@@ -42,7 +42,7 @@ app.post('/api/notes', (req, res) => {
   // reading existing notes in
   var notes = [];
 
-  notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+  notes = JSON.parse(fs.readFileSync('./db.json', 'utf8'));
 
   // notes = [ { title: "Test Title"} ]
   var newNote = {
@@ -54,7 +54,7 @@ app.post('/api/notes', (req, res) => {
   // notes = [ {}, {  ... new item ... }]
   // saving data back to the file
 
-  fs.writeFileSync('./db/db.json', JSON.stringify(notes));
+  fs.writeFileSync('./db.json', JSON.stringify(notes));
 
   //the fs method here is saving the notes to the db file
   ret = {
@@ -70,7 +70,7 @@ app.delete('/api/notes/:id', (req, res) => { //adding id because the browser nee
   console.log('DELETE ' + req.params.id);
   var notes = [];
 
-  notes = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+  notes = JSON.parse(fs.readFileSync('./db.json', 'utf8'));
 
   // rebuild array and skip the deleted one
   newNotes = [];
@@ -81,7 +81,7 @@ app.delete('/api/notes/:id', (req, res) => { //adding id because the browser nee
   }
   // saving data back to the file
 
-  fs.writeFileSync('./db/db.json', JSON.stringify(newNotes));
+  fs.writeFileSync('./db.json', JSON.stringify(newNotes));
 
   ret = {
     "status": "ok"
